@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\BlogController; // this controller is imported for use
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('insert');
 });
+
+    // method used in form      page to route       controller name and its class which we are using
+    // for using a contoller, we have to import it at top of this file
+Route::post('store',[BlogController::class,'store']);
+
+Route::get('show',[BlogController::class,'show']);
+
+Route::get('delete/{id}',[BlogController::class,'destroy']);
+
+Route::get('edit/{id}',[BlogController::class,'edit']);
+
+Route::post('update/{id}',[BlogController::class,'update']);
